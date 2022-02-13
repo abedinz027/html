@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content=
+        "width=device-width, 
+        initial-scale=1.0" />
+  
+    <title>Digital Clock</title>
+  
+    <style>
+        button{
+            color: black;
+            background-color: white;
+            border-radius: 2px;
+            width: 55px;
+            height: 40px;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+
+        }
+        #box{
+            font-size: 30px;
+  width: 500px;
+  color: white;
+  background-color: black;
+  margin-top: 200px;
+  text-align: center;
+  border: 2px solid black;
+  font-style: normal;
+  font-style:inherit;
+  margin-left: 400px;
+  /* border-radius: 20px; */
+
+        }
+        #clock{
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        #date{
+            font-size: 40px;
+            margin-bottom: 10px;
+            
+        }
+        
+    </style>
+    
+</head>
+  
+<body >
+    
+        <div id="box">
+            <div style="margin-bottom: 40px; margin-top: 30px; ;">
+                Digital Clock
+            </div>
+            
+            
+
+
+        <div id="clock" > </div>
+        <div id="date"></div>
+        <div id="click">
+            <button onclick="pause()">Stop</button>
+            <button onclick="play()">Start</button>
+        </div>
+        </div>
+        <script>
+          var time = setInterval(showTime, 1000);
+            function showTime() {
+                let time = new Date();
+                let hour = time.getHours();
+                let min = time.getMinutes();
+                let sec = time.getSeconds();
+                am_pm = "AM";
+      
+                if (hour > 12) {
+                    hour -= 12;
+                    am_pm = "PM";
+                }
+                if (hour == 0) {
+                    hr = 12;
+                    am_pm = "AM";
+                }
+      
+                hour = hour < 10 ? "0" + hour : hour;
+                min = min < 10 ? "0" + min : min;
+                sec = sec < 10 ? "0" + sec : sec;
+      
+                let currentTime = hour + ":" 
+                    + min + ":" + sec + am_pm;
+      
+                document.getElementById("clock")
+                    .innerHTML = currentTime;
+            
+            }
+            showTime()
+            function pause(){
+                clearInterval(time);
+
+            }
+            function play(){
+                setInterval(showTime, 1000);
+
+            }
+            var date = setInterval(showdate, 1000);
+            function showdate(){
+                let time = new Date();
+                let date = time.getDate();
+                let month = time.getMonth();
+                let year = time.getFullYear();
+                let currentDate = date+"/"+month+"/"+year;
+                document.getElementById("date")
+                .innerHTML = currentDate;
+            }
+      
+            
+        </script>
+        
+   
+    
+</body>
+  
+</html>
